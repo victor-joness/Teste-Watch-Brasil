@@ -1,7 +1,4 @@
 # Teste Watch Brasil
-
-> Descrição curta do seu projeto
-
 ## Índice
 
 - [Descrição](#descrição)
@@ -14,7 +11,7 @@
 
 ## Descrição
 
-O **Nome do Projeto** é uma aplicação desenvolvida para **[descrição do propósito e objetivos do projeto]**. Ele permite aos usuários **[explicar brevemente o que o projeto faz]**.
+Teste para desenvolvedor FullStackJR para a Watch Brasil, solicitado o front e backend de uma sistema de tarefas.
 
 ## Tecnologias
 
@@ -28,42 +25,73 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ### **Backend**:
 - [Node.js](https://nodejs.org/)
-- Utilizado o Node.JS como linguagem do Backend.
-- [Express.js](https://expressjs.com/)
-- Utilizado o Express.js por conta da sua flexíbilidade. 
-- [Drizzle ORM](https://www.drizzle.team/)
-- Utilizado o Drizzle para tornar o desenvolvimento mais rápido, já que a maioria das queries sql era de CRUD.
+- [Express.js](https://expressjs.com/) 
+- [Drizzle ORM](https://www.drizzle.team/): Utilizado o Drizzle para tornar o desenvolvimento mais rápido, já que a maioria das queries sql era de CRUD.
 
 ### **Arquitetura**:
-A arquitetura do projeto segue o padrão Controller -> Service -> Repository, que ajuda a organizar a aplicação de maneira eficiente e modular. Abaixo, você pode ver um diagrama que ilustra como essas camadas se comunicam entre si para garantir a separação de responsabilidades e promover uma estrutura mais limpa e escalável.
-Esse padrão permite que a lógica de controle, a lógica de negócios e a manipulação de dados sejam mantidas em camadas distintas, facilitando a manutenção, testes e futuras expansões do sistema.
-Além disso, foi utilizado principios de SOLID.
+- A arquitetura do projeto segue o padrão Controller -> Service -> Repository, que ajuda a organizar a aplicação de maneira eficiente e modular. 
+- Abaixo, tem um diagrama dessas camadas que se comunicam entre si para garantir a separação de responsabilidades e promover uma estrutura mais limpa e escalável.
+- Além disso, foi utilizado principios de SOLID.
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/ARQUITETURA.png"
+     alt="Arquitetura"
+     style="width:600px;" />
 
 ### **Observabilidade**:
-- [OpenTelemetry]()
-Framework open-source para coleta de métricas e traces, permitindo rastrear o desempenho da aplicação e entender o comportamento do sistema.
-- [Jaeger]()
-Sistema de rastreamento distribuído, utilizado para coletar, armazenar e visualizar traces de requisições, facilitando o diagnóstico de problemas de desempenho.
-- [Grafana]()
-Plataforma de visualização de dados para análise de métricas, utilizada para criar dashboards em tempo real a partir das métricas coletadas pela aplicação.
-O monitoramento das métricas da API foi configurado através do Grafana, com dashboards que monitoram 4 métricas principais. Os dados são coletados a partir do Prometheus.
-Para visualizar as métricas, basta executar o docker-compose e acessar a aplicação na porta 3000.
-- [Prometheus]()
-Sistema de monitoramento e alerta baseado em métricas. Utilizado para coletar métricas da aplicação e disponibilizá-las para visualização no Grafana.
-Para acessar os dados, execute o docker-compose e abra a aplicação na porta 9090.
+- [OpenTelemetry](): Framework open-source para coleta de métricas e traces, permitindo rastrear o desempenho da aplicação e entender o comportamento do sistema.
+- [Jaeger](): Sistema de rastreamento distribuído, utilizado para coletar, armazenar e visualizar traces de requisições, facilitando o diagnóstico de problemas de desempenho.
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/JAEGER%2001.png"
+     alt="Jaeger"
+     style="width:600px;" />
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/JAEGER%2002.png"
+     alt="Jaeger"
+     style="width:600px;" />
+
+- [Grafana](): Plataforma de visualização de dados para análise de métricas, utilizada para criar dashboards em tempo real a partir das métricas coletadas pela aplicação.
+- O monitoramento das métricas da API foi configurado através do Grafana, com dashboards que monitoram 4 métricas principais. Os dados são coletados a partir do Prometheus.
+- Para visualizar as métricas, basta executar o docker-compose e acessar a aplicação na porta 3000.
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/GRAFANA%2001.png"
+     alt="Grafana"
+     style="width:600px;" />
+
+- [Prometheus](): Sistema de monitoramento e alerta baseado em métricas. Utilizado para coletar métricas da aplicação e disponibilizá-las para visualização no Grafana.
+- Para acessar os dados, execute o docker-compose e abra a aplicação na porta 9090.
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/PROMETHEUS%2001.png"
+     alt="Prometheus"
+     style="width:600px;" />
 
 ### **Banco de Dados**:
 - [PostgreSQL](https://www.postgresql.org/)
-- Utilizado o banco de dados relacional PostgreSQL.
-- Os scripts de migração das tabelas pode ser obetido com o comando npm run migrate:generate
+- Os scripts de migração das tabelas podem ser obtidos com o comando npm run migrate:generate
 - Depois foi executado manualmente no PGADMIN4.
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/POSTGRESS%2001.png"
+     alt="Postgress"
+     style="width:600px;" />
 
 ### **Docker**:
 - Foi utilizado o Docker para containerizar as aplicações, garantindo um ambiente isolado e fácil de gerenciar. O docker-compose é usado para orquestrar os containers, e todas as 6 aplicações do projeto são executadas em containers separados, tornando o ambiente de desenvolvimento e produção mais simples e escalável.
 
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/DOCKER%2001%5B.png"
+     alt="Docker"
+     style="width:600px;" />
+
 ### **Swagger**:
 - Toda a API foi documentada no SWAGGER.
 - Para acessar utilize a porta http://localhost:5005/api/docs
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/SWAGGER%2001.png"
+     alt="SWAGGER"
+     style="width:600px;" />
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/SWAGGER%2002.png"
+     alt="SWAGGER"
+     style="width:600px;" />
+
+### **Testes JEST**:
 
 ## Instalação
 
@@ -71,9 +99,7 @@ Siga os passos abaixo para rodar o projeto localmente:
 
 ### Clonando o repositório
 
-bash
 git clone https://github.com/seuusuario/seuprojeto.git
-cd
 
 ## Instalação
 # Para o frontend
@@ -83,6 +109,11 @@ npm install
 # Para o backend
 cd Backend
 npm install
+
+# Para o Docker
+cd Backend
+docker-compose up -d 
+- Esperado 6 aplicações no docker
 
 ## Telas
 
@@ -106,4 +137,6 @@ npm install
 
 #Tela de Categoria
 - Tela a onde vemos a listagem de categorias daquele usuario, podendo adicionar novas, editar ou excluir.
+
+## AWS Lambda
 

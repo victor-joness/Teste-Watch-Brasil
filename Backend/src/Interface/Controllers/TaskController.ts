@@ -2,8 +2,12 @@ import { TaskServices } from "../../core/Services/TaskServices";
 import { Request, Response } from "express";
 import { sendResponse } from "../../Shared/Utils/ResponseTemplate";
 import { Task } from "../../core/Entities/Task";
+import { Mock, UnknownFunction } from "jest-mock";
 
 export class TaskController {
+    getTasks(req: {}, res: { status: Mock<UnknownFunction>; json: Mock<UnknownFunction>; }) {
+        throw new Error('Method not implemented.');
+    }
     constructor(private taskServices: TaskServices) {}
 
     async createTask(req: Request, res: Response) {
