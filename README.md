@@ -5,9 +5,8 @@
 - [Tecnologias](#tecnologias)
 - [Instalação](#instalação)
 - [Uso](#uso)
+- [AWS](#AWS)
 - [API](#api)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
 
 ## Descrição
 
@@ -35,7 +34,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 <img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/ARQUITETURA.png"
      alt="Arquitetura"
-     style="width:600px;" />
+     style="width:100%;" />
 
 ### **Observabilidade**:
 - [OpenTelemetry](): Framework open-source para coleta de métricas e traces, permitindo rastrear o desempenho da aplicação e entender o comportamento do sistema.
@@ -43,10 +42,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 <img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/JAEGER%2001.png"
      alt="Jaeger"
-     style="width:600px;" />
+     style="width:100%;" />
 <img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/JAEGER%2002.png"
      alt="Jaeger"
-     style="width:600px;" />
+     style="width:100%;" />
 
 - [Grafana](): Plataforma de visualização de dados para análise de métricas, utilizada para criar dashboards em tempo real a partir das métricas coletadas pela aplicação.
 - O monitoramento das métricas da API foi configurado através do Grafana, com dashboards que monitoram 4 métricas principais. Os dados são coletados a partir do Prometheus.
@@ -54,14 +53,14 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 <img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/GRAFANA%2001.png"
      alt="Grafana"
-     style="width:600px;" />
+     style="width:100%;" />
 
 - [Prometheus](): Sistema de monitoramento e alerta baseado em métricas. Utilizado para coletar métricas da aplicação e disponibilizá-las para visualização no Grafana.
 - Para acessar os dados, execute o docker-compose e abra a aplicação na porta 9090.
 
 <img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/PROMETHEUS%2001.png"
      alt="Prometheus"
-     style="width:600px;" />
+     style="width:100%;" />
 
 ### **Banco de Dados**:
 - [PostgreSQL](https://www.postgresql.org/)
@@ -70,14 +69,14 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 <img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/POSTGRESS%2001.png"
      alt="Postgress"
-     style="width:600px;" />
+     style="width:100%;" />
 
 ### **Docker**:
 - Foi utilizado o Docker para containerizar as aplicações, garantindo um ambiente isolado e fácil de gerenciar. O docker-compose é usado para orquestrar os containers, e todas as 6 aplicações do projeto são executadas em containers separados, tornando o ambiente de desenvolvimento e produção mais simples e escalável.
 
 <img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/DOCKER%2001%5B.png"
      alt="Docker"
-     style="width:600px;" />
+     style="width:100%;" />
 
 ### **Swagger**:
 - Toda a API foi documentada no SWAGGER.
@@ -85,11 +84,11 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 <img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/SWAGGER%2001.png"
      alt="SWAGGER"
-     style="width:600px;" />
+     style="width:100%;" />
 
 <img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/SWAGGER%2002.png"
      alt="SWAGGER"
-     style="width:600px;" />
+     style="width:100%;" />
 
 ### **Testes JEST**:
 
@@ -102,20 +101,20 @@ Siga os passos abaixo para rodar o projeto localmente:
 git clone https://github.com/seuusuario/seuprojeto.git
 
 ## Instalação
-# Para o frontend
+### Para o frontend
 cd Frontend
 npm install
 
-# Para o backend
+### Para o backend
 cd Backend
 npm install
 
-# Para o Docker
+### Para o Docker
 cd Backend
 docker-compose up -d 
 - Esperado 6 aplicações no docker
 
-## Telas
+## Uso
 
 - Todas as telas estão responsivas e tem o tema preto e branco.
 
@@ -138,5 +137,19 @@ docker-compose up -d
 #Tela de Categoria
 - Tela a onde vemos a listagem de categorias daquele usuario, podendo adicionar novas, editar ou excluir.
 
-## AWS Lambda
+## AWS
+
+## Api
+- A api é composta por basicamente esses endpoints (Auth, Category, Comment, Invitation, Report, Task, User).
+- Feito o uso de Criptografia da senha.
+- Proteção das rotas com Bearer Token + JWT
+
+📦Routes                                                                                          
+ ┣ 📜AuthRoutes.ts                                                                                      
+ ┣ 📜CategoryRoutes.ts                                                                      
+ ┣ 📜CommentRoutes.ts                                                                                               
+ ┣ 📜InvitationRoutes.ts                                                                                          
+ ┣ 📜ReportRoutes.ts                                                                 
+ ┣ 📜TaskRoutes.ts                                                                                
+ ┗ 📜UserRoutes.ts                                                                                                                             
 
