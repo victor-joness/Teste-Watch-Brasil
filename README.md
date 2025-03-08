@@ -102,14 +102,14 @@ git clone [https://github.com/victor-joness/Teste-Watch-Brasil.git]
 
 ## Instalação e Starter
 ### Para o frontend
-cd Frontend
-npm install
-npm run dev
+cd Frontend                                                                                
+npm install                                                                                     
+npm run dev                                                                                                                                                                
 
 ### Para o backend
-cd Backend
-npm install
-npm run dev
+cd Backend                                                                                     
+npm install                                                                           
+npm run dev                                                                                                                                  
 
 ### Para o Docker
 cd Backend
