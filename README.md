@@ -5,7 +5,7 @@
 - [Tecnologias](#tecnologias)
 - [Instalação](#instalação)
 - [Uso](#uso)
-- [AWS](#AWS)
+- [AWS](#aws)
 - [API](#api)
 
 ## Descrição
@@ -29,7 +29,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ### **Arquitetura**:
 - A arquitetura do projeto segue o padrão Controller -> Service -> Repository, que ajuda a organizar a aplicação de maneira eficiente e modular. 
-- Abaixo, tem um diagrama dessas camadas que se comunicam entre si para garantir a separação de responsabilidades e promover uma estrutura mais limpa e escalável.
+- Abaixo, tem um diagrama dessas camadas e a comunicação entre si para garantir a separação de responsabilidades e promover uma estrutura mais limpa e escalável.
 - Além disso, foi utilizado principios de SOLID.
 
 <img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/ARQUITETURA.png"
@@ -39,6 +39,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ### **Observabilidade**:
 - [OpenTelemetry](): Framework open-source para coleta de métricas e traces, permitindo rastrear o desempenho da aplicação e entender o comportamento do sistema.
 - [Jaeger](): Sistema de rastreamento distribuído, utilizado para coletar, armazenar e visualizar traces de requisições, facilitando o diagnóstico de problemas de desempenho.
+- Acesse a porta 8081 para ver;
 
 <img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/JAEGER%2001.png"
      alt="Jaeger"
@@ -91,6 +92,11 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
      style="width:100%;" />
 
 ### **Testes JEST**:
+- Foi feito um teste basico de getAll<Entity> com o Jest.
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/JEST%2001.png"
+     alt="JEST"
+     style="width:100%;" />
 
 ## Instalação
 
@@ -109,37 +115,135 @@ npm run dev
 ### Para o backend
 cd Backend                                                                                     
 npm install                                                                           
-npm run dev                                                                                                                                  
+npm run dev      
+
+### Para o banco de dados
+cd Backend                                                                                     
+npm migrate:generate                                                            
+exceutar o script no Pgadmin4                                                                                                                       
 
 ### Para o Docker
-cd Backend
-docker-compose up -d 
-- Esperado 6 aplicações no docker
+cd Backend                                                                      
+docker-compose up -d                                                                                                          
+Esperado 6 aplicações no docker                                                                                                                                                                                                                       
 
 ## Uso
-
 - Todas as telas estão responsivas e tem o tema preto e branco.
 
-#Home
+### Home
 - Primeira tela da aplicação, a onde o user pode escolher entre fazer login ou register
 
-#Login
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20HOME.png"
+     alt="HOME"
+     style="width:100%;" />
+
+### Login
 - Tela de login da aplicação
 
-#Register
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20LOGIN.png"
+     alt="LOGIN"
+     style="width:100%;" />
+
+### Register
 - Tela de Regfister da aplicação
 
-#Tela de Dashboard
-- Tela que tras alguns relatorios simples do sistema de tarefas.
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20REGISTER.png"
+     alt="REGISTER"
+     style="width:100%;" />
 
-#Tela de Tarefas
+### Tela de Dashboard
+- Tela de dashboard que traz alguns relatorios simples do sistema de tarefas, como por exemplo a quantidade de categorias, de tarefas, as ultimas 3 tarefas e tarefas completadas/pendentes.
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20DASHBOARD.png"
+     alt="DASHBOARD"
+     style="width:100%;" />
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20TAREFAS%20CONCLUIDA%20%2B%20EM%20ANDAMENTO%2002.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+
+### Tela de Tarefas
 - Tela a onde vemos a listagem de tarefas daquele usuario, podendo adicionar novas, editar ou excluir.
-- Possibilidade de compartilhar tarefas entre usuarios.
+- Possibilidade de compartilhar tarefas entre usuarios, se um dos 2 usuairos que compartilham da mesma tarefa, finalizar ela, em ambos perfils a tarefa é finalizada.
 
-#Tela de Categoria
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20TAREFAS.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20NOVA%20TAREFA.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+
+### Tela de compartilhamento
+- Funcionalidade de compartilhamento
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20COMPARTILHAMENTO.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20COMPARTILHAMENTO%2002.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20COMPARTILHAMENTO%2003.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+
+### Tela de Categoria
 - Tela a onde vemos a listagem de categorias daquele usuario, podendo adicionar novas, editar ou excluir.
 
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20CATEGORIApng.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20adi%C3%A7%C3%A3o%20de%20categoria.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+
+### Tela de Listagem de todas tarefas
+- Tela a onde vemos a listagem de de todas as tarefas do sistema, com informações de titulo, status, prioridade e porcentagem de andamento da tarefa.
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20LISTAGEM%20DE%20TAREFAS.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+
+### Tela de Usuarios
+- Tela a onde podemos ver informações do usuario, fazer edição ou excluir.
+- Se for um user ADMIN, é possivel ver informações de todos os usuarios, mas não editar.
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20USUARIO.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20USUARIO%20ADMIN.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20USUARIO%20EDI%C3%87%C3%83O.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/TELA%20NOVO%20USUARIO%20ADMIN.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+     
 ## AWS
+- Feito o deploy da API no AWS LAMBDA + APIGATEWAY;
+ 
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/AWS1.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/AWS2.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/API%2003.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/API%2002.png"
+     alt="TAREFAS"
+     style="width:100%;" />
+<img src="https://github.com/victor-joness/Teste-Watch-Brasil/blob/main/Imagens/API%2001.png"
+     alt="TAREFAS"
+     style="width:100%;" />
 
 ## Api
 - A api é composta por basicamente esses endpoints (Auth, Category, Comment, Invitation, Report, Task, User).
