@@ -18,6 +18,7 @@ const sdk = new NodeSDK({
   }),
   
   metricReader: new PeriodicExportingMetricReader({
+    //@ts-ignore
     exporter: new PrometheusExporter({
       port: 9464,
     }),

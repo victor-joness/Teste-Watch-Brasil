@@ -8,17 +8,7 @@ export class CommentController {
 
   async createComment(req: Request, res: Response) {
     try {
-      const { Content, AuthorId, TaskId } = req.body;
-
-      const newComment = new Comment(
-        0,
-        Content,
-        AuthorId,
-        TaskId,
-        null,
-        null,
-        new Date().toISOString()
-      );
+      const newComment = req.body;
 
       const createdComment = await this.commentServices.createComment(
         newComment
@@ -70,17 +60,7 @@ export class CommentController {
   async updateComment(req: Request, res: Response) {
     try {
       const commentId = parseInt(req.params.id);
-      const { Content, AuthorId, TaskId } = req.body;
-
-      const updatedComment = new Comment(
-        commentId,
-        Content,
-        AuthorId,
-        TaskId,
-        null,
-        new Date().toISOString(),
-        null
-      );
+      const updatedComment = req.body;
 
       const comment = await this.commentServices.updateComment(updatedComment);
 

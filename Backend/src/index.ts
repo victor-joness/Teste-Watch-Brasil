@@ -8,6 +8,7 @@ import { setupSwagger } from "./Infrastructure/external-services/SwaggerService"
 import rateLimit from "express-rate-limit";
 import routes from "./Interface/Routes/index";
 import promClient from "prom-client";
+import serverless from "serverless-http";
 
 dotenv.config();
 const app = express();
@@ -60,6 +61,8 @@ app.get("/metrics", async (req, res) => {
     span.setAttribute("http.response_payload", JSON.stringify(payload));
   }
 });
+
+//export const handler = serverless(app);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);

@@ -16,6 +16,7 @@ export class TaskMapper {
       task.AssignedTo,
       task.DueDate,
       task.Progress,
+      task.TaskOrigin,
       task.DeletionDate,
       task.ModifiedDate,
       task.CreationDate

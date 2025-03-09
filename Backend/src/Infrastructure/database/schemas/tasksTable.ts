@@ -10,6 +10,7 @@ export const tasksTable = pgTable("tasks", {
   AssignedTo: integer("assigned_to").notNull(),
   DueDate: varchar("due_date", { length: 255 }).notNull(),
   Progress: integer("progress").notNull(),
+  TaskOrigin: integer("task_origin"),
   DeletionDate: varchar("deletion_date", { length: 255 }),
   ModifiedDate: varchar("modified_date", { length: 255 }),
   CreationDate: varchar("creation_date", { length: 255 }),

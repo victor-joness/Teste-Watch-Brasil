@@ -1,0 +1,20 @@
+org: victorjones
+service: api-watch-serverless
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+
+functions:
+  api:
+    handler: dist/index.handler
+    events:
+      - httpApi: "*"
+      - http:
+          path: /api
+          method: any
+          cors: true
+      - http:
+          path: /api/{proxy+}
+          method: any
+          cors: true 

@@ -9,6 +9,9 @@ import { Input } from '@/components/ui/input'
 import { Dialog, DialogContent, DialogHeader, DialogFooter } from '@/components/ui/dialog'
 import axios from 'axios'
 import { url } from '@/lib/api'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/userStore'
+import { useToast } from 'vue-toastification'
 
 const categories = ref<any[]>([])
 const tasks = ref<any[]>([])
@@ -21,13 +24,9 @@ const currentTask = ref<any>(null)
 const inviteEmail = ref('')
 const invitations = ref<any[]>([])
 const toast = useToast();
-
-import { useRouter } from 'vue-router'
-import { useUserStore } from '@/stores/userStore'
-import { useToast } from 'vue-toastification'
-
 const router = useRouter()
 const token = localStorage.getItem('Token-Watch')
+
 if (!token) router.push('/login')
 
 const store = useUserStore()
@@ -46,6 +45,12 @@ const fetchCategoriesAndTasks = async () => {
       headers: { Authorization: `Bearer ${token}` }
     })
     tasks.value = taskResponse.data.data || []
+    tasks.value.forEach((task: any) => {
+      if (task.Status == 'Concluída') {
+        task.completed = true;
+      }
+    });
+
   } catch (error) {
     console.error('Erro ao buscar dados:', error)
   }
@@ -143,7 +148,7 @@ const openEditCategoryModal = (categoryId: number) => {
 
   if (categoryToEdit) {
     categoryEditId.value = categoryToEdit.Id
-    categoryName.value = categoryToEdit.name
+    categoryName.value = categoryToEdit.Name
     isEditCategoryModalOpen.value = true
   }
 }
@@ -196,6 +201,7 @@ const saveTask = async () => {
     try {
       const token = localStorage.getItem('Token-Watch')
       const taskPayload = {
+        Id: currentTask.value.Id,
         Title: currentTask.value.Title,
         Description: currentTask.value.Description,
         Status: currentTask.value.Status,
@@ -204,12 +210,13 @@ const saveTask = async () => {
         AssignedTo: store.userId ? parseInt(store.userId) : 0,
         DueDate: currentTask.value.DueDate,
         Progress: currentTask.value.Progress,
+        TaskOrigin: currentTask.value.TaskOrigin,
         DeletionDate: currentTask.value.DeletionDate,
         ModifiedDate: today,
         CreationDate: today
       }
 
-      if (currentTask.value.Id === null) {
+      if (currentTask.value.Id == undefined) {
         const response = await axios.post(`${url}/tasks`, taskPayload, {
           headers: { Authorization: `Bearer ${token}` }
         })
@@ -218,7 +225,7 @@ const saveTask = async () => {
         const response = await axios.put(`${url}/tasks/${currentTask.value.Id}`, taskPayload, {
           headers: { Authorization: `Bearer ${token}` }
         })
-        const index = tasks.value.findIndex((task) => task.id === currentTask.value.id)
+        const index = tasks.value.findIndex((task) => task.Id === currentTask.value.Id)
         if (index !== -1) {
           tasks.value[index] = response.data.data
         }
@@ -263,6 +270,7 @@ const toggleTaskCompletion = async (taskId: number) => {
         AssignedTo: store.userId ? parseInt(store.userId) : 0,
         DueDate: task.DueDate,
         Progress: task.Progress,
+        TaskOrigin: task.TaskOrigin,
         CreationDate: task.CreationDate,
         ModifiedDate: new Date().toISOString(),
         DeletionDate: task.DeletionDate
@@ -361,12 +369,8 @@ const getCategoryProgress = (category: string) => {
 
 const totalCategories = computed(() => categories.value.length)
 const totalTasks = computed(() => (Array.isArray(tasks.value) ? tasks.value.length : 0))
-const completedTasks = computed(() =>
-  Array.isArray(tasks.value) ? tasks.value.filter((task) => task.completed).length : 0
-)
-const pendingTasks = computed(() =>
-  Array.isArray(tasks.value) ? tasks.value.filter((task) => task.Status === 'Pendente').length : 0
-)
+const completedTasks = computed(() => Array.isArray(tasks.value) ? tasks.value.filter((task) => task.completed).length : 0)
+const pendingTasks = computed(() => Array.isArray(tasks.value) ? tasks.value.filter((task) => task.Status != 'Concluída').length : 0)
 </script>
 
 <template>
@@ -814,34 +818,3 @@ const pendingTasks = computed(() =>
     </Dialog>
   </div>
 </template>
-
-<style scoped>
-.card-header {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.card-content {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin-top: 10px;
-}
-.card-content li {
-  margin-bottom: 10px;
-}
-.card-content ul {
-  list-style: none;
-  padding-left: 0;
-}
-.card-content .task {
-  border-left: 2px solid #3490dc;
-  padding-left: 10px;
-}
-.card-content .category {
-  background-color: #f7fafc;
-  padding: 5px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  font-weight: bold;
-  color: #333;
-}
-</style>

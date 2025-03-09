@@ -10,6 +10,7 @@ export class Task extends BaseEntity {
   public AssignedTo: number;
   public DueDate: string;
   public Progress: number;
+  public TaskOrigin: number | null;
 
   constructor(
     Id: number,
@@ -21,6 +22,7 @@ export class Task extends BaseEntity {
     AssignedTo: number,
     DueDate: string,
     Progress: number,
+    TaskOrigin: number | null,
     DeletionDate?: string | null,
     ModifiedDate?: string | null,
     CreationDate?: string | null
@@ -34,5 +36,6 @@ export class Task extends BaseEntity {
     this.AssignedTo = AssignedTo;
     this.DueDate = DueDate;
     this.Progress = Progress;
+    this.TaskOrigin = TaskOrigin;
   }
 }

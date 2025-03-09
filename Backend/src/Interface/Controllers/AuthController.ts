@@ -1,12 +1,11 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { UserServices } from "../../core/Services/UserServices";
 import { User } from "../../core/Entities/User";
 import { sendResponse } from "../../Shared/Utils/ResponseTemplate";
 import { HashService } from "../../Shared/Utils/HashService";
 import { RoleEnum } from "../../Shared/Enum/Enums";
-import { uuid } from "drizzle-orm/gel-core";
 import { generateId } from "../../Shared/Utils/GenerateId";
 
 const JWT_SECRET = process.env.JWT_SECRET || "minha_chave_secreta";

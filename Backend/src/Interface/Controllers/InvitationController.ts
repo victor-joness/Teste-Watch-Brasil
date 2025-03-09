@@ -19,6 +19,7 @@ export class InvitationController {
       const createdInvitation = await this.invitationServices.createInvitation(
         newInvitation
       );
+
       const taskResponse = await this.taskServices.getTaskById(
         newInvitation.TaskId
       );
@@ -32,22 +33,38 @@ export class InvitationController {
 
       let category = await this.categoryServices.getCategoryById(CategoryId);
 
-      const newCategory: any = {
-        Name: category?.Name,
-        AssignedTo: newInvitation.ReceiverId,
-        DeletionDate: null,
-        ModifiedDate: new Date().toISOString(),
-        CreationDate: new Date().toISOString(),
-      };
+      const existingCategories =
+        await this.categoryServices.getCategoryByUserID(
+          newInvitation.ReceiverId
+        );
 
-      let newCategoryCreated = await this.categoryServices.createCategory(
-        newCategory
+      const existingCategory = existingCategories.find(
+        (cat) => cat.Name === category?.Name
       );
+
+      let newCategory: any;
+
+      if (existingCategory) {
+        newCategory = existingCategory;
+      } else {
+        newCategory = {
+          Name: category?.Name,
+          AssignedTo: newInvitation.ReceiverId,
+          DeletionDate: null,
+          ModifiedDate: new Date().toISOString(),
+          CreationDate: new Date().toISOString(),
+        };
+
+        newCategory = await this.categoryServices.createCategory(newCategory);
+      }
 
       const newTask: any = {
         ...taskWithoutId,
         AssignedTo: newInvitation.ReceiverId,
-        CategoryId: newCategoryCreated.Id,
+        CategoryId: newCategory.Id,
+        DeletionDate: null,
+        CreationDate: new Date().toISOString(),
+        TaskOrigin: Id,
       };
 
       const createdTask = await this.taskServices.createTask(newTask);

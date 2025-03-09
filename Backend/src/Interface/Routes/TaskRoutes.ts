@@ -47,6 +47,9 @@ const taskController = new TaskController(taskServices);
  *         Progress:
  *           type: number
  *           example: 50
+ *         TaskOrigin:
+ *           type: number
+ *           example: 50
  */
 
 /**

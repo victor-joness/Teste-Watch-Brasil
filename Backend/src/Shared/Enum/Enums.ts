@@ -1,7 +1,7 @@
 export enum TaskStatusEnum {
-  CREATED = 1,
-  PENDING = 2,
-  COMPLETED = 3,
+  CREATED = "Pendente",
+  PENDING = "Em andamento",
+  COMPLETED = "Concluída",
 }
 
 export enum TaskPriorityEnum {

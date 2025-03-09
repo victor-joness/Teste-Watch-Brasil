@@ -7,7 +7,7 @@ export const verifyToken = (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): any => {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
 
